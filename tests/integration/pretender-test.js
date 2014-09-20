@@ -23,11 +23,19 @@ module('Integration - Pretender', {
   }
 });
 
-test('Should list all users', function() {
+test('should list all users', function() {
   visit('/users');
   andThen(function() {
     equal(find('a:contains("jimi@example.com")').length, 1);
     equal(find('a:contains("miles@example.com")').length, 1);
     equal(find('a:contains("jane@example.com")').length, 1);
+  });
+});
+
+test('should navigate to user page', function() {
+  visit('/users');
+  click('a:contains("jimi@example.com")');
+  andThen(function() {
+    equal(find('h3').text(), 'jimi@example.com');
   });
 });
