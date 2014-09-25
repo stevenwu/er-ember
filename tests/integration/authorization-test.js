@@ -34,6 +34,10 @@ module('Integration - Authorization', {
           return [401, {'Content-Type': 'application/json'}, JSON.stringify({})];
         }
       });
+
+      this.delete('/api/sign_out', function(request) {
+        return [200, {'Content-Type': 'application/json'}, JSON.stringify({id: 1, status: 'ok'})];
+      });
     });
   },
   teardown: function() {
@@ -51,5 +55,17 @@ test('should be able to login', function() {
 
   andThen(function() {
     equal(find('h3').text(), 'Dashboard');
+  });
+});
+
+test('should sign out', function() {
+  visit('/login');
+  fillIn('input.email', user.email);
+  fillIn('input.password', user.password);
+  click('button.submit');
+  click('button.sign-out');
+
+  andThen(function() {
+    equal(currentURL(), '/');
   });
 });
