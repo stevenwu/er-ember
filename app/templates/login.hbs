@@ -1,0 +1,15 @@
+<h3>Log In</h3>
+
+{{#if response.success}}
+  <div>Logged in</div>
+{{/if}}
+
+{{#if response.failure}}
+  <div>Unauthorized</div>
+{{/if}}
+
+<form>
+  {{input value=email class='email' placeholder='Email'}}
+  {{input value=password type='password' class='password' placeholder='Password'}}
+  <button {{action 'authenticate'}} class='submit'>Sign in</button>
+</form>

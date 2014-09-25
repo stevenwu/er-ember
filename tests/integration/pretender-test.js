@@ -10,8 +10,12 @@ module('Integration - Pretender', {
       {id: 2, email: 'miles@example.com'},
       {id: 3, email: 'jane@example.com'}
     ];
+    var auth_token = {"authenticity_token":"CLp4LfAF5XnJbCFPVEtzPpG7cga1u0NPgivqwmLXIgk="};
     App = startApp();
     server = new Pretender(function() {
+      this.get('api/csrf', function(request) {
+        return [200, {'Content-Type': 'application/json'}, JSON.stringify(auth_token)];
+      });
       this.get('/api/users', function(request) {
         return [200, {'Content-Type': 'application/json'}, JSON.stringify({users: users})];
       });

@@ -7,10 +7,13 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('about');
+  this.route('login');
+  this.route('dashboard');
   this.resource('users', function() {
     this.route('show', { path: '/:user_id' });
   });
   this.route('users/show');
+  this.route('dashboard');
 });
 
 export default Router;
