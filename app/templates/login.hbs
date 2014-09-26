@@ -9,7 +9,11 @@
 {{/if}}
 
 <form>
-  {{input value=email class='email' placeholder='Email'}}
-  {{input value=password type='password' class='password' placeholder='Password'}}
-  <button {{action 'authenticate'}} class='submit'>Sign in</button>
+  <div class='form-group col-md-4'>
+  {{input value=email class='form-control email' placeholder='Email'}}
+  </div>
+  <div class='form-group col-md-4'>
+  {{input value=password type='password' class='form-control password' placeholder='Password'}}
+  </div>
+  <button {{action 'authenticate'}} class='submit btn btn-default btn-sm'>Sign in</button>
 </form>

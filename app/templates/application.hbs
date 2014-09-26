@@ -1,10 +1,22 @@
 <div class='container-fluid'>
-<h2 id='title'>Welcome to Oxford Circus</h2>
 
-{{link-to 'Home' 'application'}}
-{{link-to 'About' 'about'}}
-{{link-to 'Users' 'users'}}
-{{link-to 'Log In' 'login'}}
-<button class='btn btn-default btn-sm sign-out' {{action 'signOut'}}>Sign out</button>
+<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
+  <div class='container'>
+    {{link-to 'Stamford' 'application' class='navbar-brand'}}
+    <ul class='nav navbar-nav'>
+    <li>{{link-to 'Home' 'application'}}</li>
+    <li>{{link-to 'About' 'about'}}</li>
+    <li>{{link-to 'Users' 'users'}}</li>
+    </ul>
+
+    {{#unless auth_token }}
+    {{link-to 'Log In' 'login' class='btn btn-default navbar-btn navbar-right'}}</li>
+    {{/unless}}
+    {{#if auth_token}}
+    <button class='btn btn-default navbar-btn navbar-right sign-out' {{action 'signOut'}}>Sign out</button>
+    {{/if}}
+  </div>
+</nav>
+<h2 id='title'>Welcome to Oxford Circus</h2>
 {{outlet}}
 </div>
