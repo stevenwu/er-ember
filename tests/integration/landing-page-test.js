@@ -29,7 +29,7 @@ test('should navigate to about page', function() {
 
 test('allow navigation back to root from another page', function() {
   visit('/about');
-  click('a:contains("Home")');
+  click('a:contains("Stamford")');
   andThen(function() {
     notEqual(find('h3').text(), 'About Oxford Circus');
   });
