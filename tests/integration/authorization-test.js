@@ -29,7 +29,7 @@ module('Integration - Authorization', {
       this.post('/api/sign_in', function(request) {
         var data = parsePostData(request.requestBody);
         if (data.password === user.password) {
-          return [201, {'Content-Type': 'application/json'}, JSON.stringify({id: 1, auth_token: "Gikvpb7_5vy-d8P3G16x"})];
+        return [201, {'Content-Type': 'application/json'}, JSON.stringify({id: 1, auth_token: "Gikvpb7_5vy-d8P3G16x", user: { id: 1, email: 'jimi@example.com', role: 'premium' }})];
         } else {
           return [401, {'Content-Type': 'application/json'}, JSON.stringify({})];
         }

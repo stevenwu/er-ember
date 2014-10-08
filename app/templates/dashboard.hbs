@@ -1,1 +1,8 @@
 <h3>Dashboard</h3>
+
+<div>email: {{isPremiumUser}}</div>
+{{#if currentUser.isPremiumUser}}
+  <div class='premium-feature'>This is visible to premium users only</div>
+{{/if}}
+
+<div>This is visible to all users</div>
