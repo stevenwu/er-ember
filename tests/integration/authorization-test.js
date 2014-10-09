@@ -64,7 +64,6 @@ test('should sign out', function() {
   fillIn('input.password', user.password);
   click('button.submit');
   click('a.sign-out-link');
-  
 
   andThen(function() {
     equal(currentURL(), '/');
