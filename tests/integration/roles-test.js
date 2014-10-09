@@ -59,25 +59,25 @@ module('Integration - Roles', {
 });
 
 test('regular users should not see premium feature', function() {
-  // visit('/login');
-  // fillIn('input.email', 'user@example.com');
-  // fillIn('input.password', 'password');
-  // click('button.submit');
+  visit('/login');
+  fillIn('input.email', 'user@example.com');
+  fillIn('input.password', 'password');
+  click('button.submit');
 
-  // andThen(function() {
-    // equal(find('h3').text(), 'Dashboard');
-    // equal(find('div.premium-feature').length, 0);
-  // });
+  andThen(function() {
+    equal(find('h3').text(), 'Dashboard');
+    equal(find('div.premium-feature').length, 0);
+  });
 });
 
 test('premium users should see premium features', function() {
-  // visit('/login');
-  // fillIn('input.email', 'premium@example.com');
-  // fillIn('input.password', 'password');
-  // click('button.submit');
+  visit('/login');
+  fillIn('input.email', 'premium@example.com');
+  fillIn('input.password', 'password');
+  click('button.submit');
 
-  // andThen(function() {
-    // equal(find('h3').text(), 'Dashboard');
-    // equal(find('div.premium-feature').length, 1);
-  // });
+  andThen(function() {
+    equal(find('h3').text(), 'Dashboard');
+    equal(find('div.premium-feature').length, 1);
+  });
 });

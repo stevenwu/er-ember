@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 
-var App;
+var App, server;
 
 module('Integration - Navigation', {
   setup: function() {
@@ -15,7 +15,7 @@ module('Integration - Navigation', {
 test('should welcome user', function() {
   visit('/');
   andThen(function() {
-    equal(find('h2').text(), 'Welcome to Oxford Circus');
+    equal(find('h1').text(), 'Attention grabbing headline about purpose of the page and product');
   });
 });
 

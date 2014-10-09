@@ -17,7 +17,7 @@
     </ul>
 
     {{#unless currentUser}}
-      {{link-to 'Log In' 'login' class='btn btn-default navbar-btn navbar-right'}}
+      {{link-to 'Log In' 'login' class='btn btn-default navbar-btn navbar-right' active=false}}
     {{/unless}}
 
     {{#if currentUser}}
@@ -32,7 +32,7 @@
 
       <ul class='dropdown-menu' id='dropdown'>
         {{#nav-item}}
-          <a {{action 'signOut'}}>Sign out</a>
+          <a class='sign-out-link' {{action 'signOut'}}>Sign out</a>
         {{/nav-item}}
       </ul>
     {{/nav-item}}
@@ -41,8 +41,8 @@
     {{/if}}
   </div>
 </nav>
-<h2 id='title'>Welcome to Oxford Circus</h2>
-<div class='container'>
-{{outlet}}
-</div>
+
+  <div class='container'>
+    {{outlet}}
+  </div>
 </div>
