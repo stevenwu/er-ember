@@ -3,7 +3,7 @@ import ajax from 'ic-ajax';
 
 export default Ember.Controller.extend({
   auth_token: null,
-  current_user: null,
+  currentUser: null,
   role: null,
   isPremiumUser: function() {
     return this.get('role') === 'premium';
@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       }).then(function(response) {
         if (response.status === 'ok') {
           self.set('auth_token', null);
-          self.set('current_user', null);
+          self.set('currentUser', null);
           self.transitionToRoute('/');
         } else {
           console.log('Unexpected Response Status');

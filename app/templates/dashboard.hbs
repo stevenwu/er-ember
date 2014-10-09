@@ -1,6 +1,6 @@
 <h3>Dashboard</h3>
 
-<div>email: {{isPremiumUser}}</div>
+<div>email: {{currentUser.email}}</div>
 {{#if currentUser.isPremiumUser}}
   <div class='premium-feature'>This is visible to premium users only</div>
 {{/if}}

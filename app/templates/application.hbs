@@ -4,15 +4,40 @@
   <div class='container'>
     {{link-to 'Stamford' 'application' class='navbar-brand'}}
     <ul class='nav navbar-nav'>
-    <li>{{link-to 'About' 'about'}}</li>
-    <li>{{link-to 'Users' 'users'}}</li>
+    {{#nav-item}}
+      {{#link-to 'about' tagName='li'}}
+        <a href='#'>About</a>
+      {{/link-to}}
+    {{/nav-item}}
+    {{#nav-item}}
+      {{#link-to 'users' tagName='li'}}
+        <a href='#'>Users</a>
+      {{/link-to}}
+    {{/nav-item}}
     </ul>
 
-    {{#unless auth_token }}
-    {{link-to 'Log In' 'login' class='btn btn-default navbar-btn navbar-right'}}</li>
+    {{#unless currentUser}}
+      {{link-to 'Log In' 'login' class='btn btn-default navbar-btn navbar-right'}}
     {{/unless}}
-    {{#if auth_token}}
-    <button class='btn btn-default navbar-btn navbar-right sign-out' {{action 'signOut'}}>Sign out</button>
+
+    {{#if currentUser}}
+
+
+    <ul class='nav navbar-nav navbar-right'>
+
+    {{#nav-item}}
+      <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+      {{currentUser.email}}<span class='caret'></span>
+      </a>
+
+      <ul class='dropdown-menu' id='dropdown'>
+        {{#nav-item}}
+          <a {{action 'signOut'}}>Sign out</a>
+        {{/nav-item}}
+      </ul>
+    {{/nav-item}}
+    </ul>
+
     {{/if}}
   </div>
 </nav>

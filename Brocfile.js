@@ -24,4 +24,6 @@ app.import('bower_components/rails-csrf/dist/named-amd/main.js', {
     ]
   }
 });
+
+app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 module.exports = app.toTree();
