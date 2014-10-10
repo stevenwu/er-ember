@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         self.store.createRecord('user', currentUser);
         self.set('currentUser', self.store.find('user', 'current'));
         self.set('role', currentUser.role);
-        self.transitionTo('dashboard');
+        self.transitionToRoute('dashboard');
       });
     }
   }
