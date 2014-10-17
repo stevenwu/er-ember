@@ -16,8 +16,5 @@
     "pretender": "0.1.0",
     "rails-csrf": "0.0.7",
     "bootstrap-sass-official": "~3.2.0+2"
-  },
-  "resolutions": {
-    "bootstrap-sass-official": "~3.2.0+2"
   }
 }

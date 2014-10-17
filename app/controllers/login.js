@@ -25,6 +25,19 @@ export default Ember.Controller.extend({
         self.set('role', currentUser.role);
         self.transitionToRoute('dashboard');
       });
+    },
+    recover_password: function() {
+      ajax('/api/password_reset', {
+        type: 'POST',
+        data: {user: {email: this.get('email')}}
+      }).then(function(response) {
+        alert(this.get('email'));
+        this.set('email', null);
+      });
+    },
+    toggle_recovery: function() {
+      Ember.$('.password-recovery').toggle();
+      Ember.$('.login-modal').toggle();
     }
   }
 });
