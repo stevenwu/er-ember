@@ -27,12 +27,13 @@ export default Ember.Controller.extend({
       });
     },
     recover_password: function() {
+      var self = this;
       ajax('/api/password_reset', {
         type: 'POST',
         data: {user: {email: this.get('email')}}
       }).then(function(response) {
-        alert(this.get('email'));
-        this.set('email', null);
+        alert(self.get('email'));
+        self.set('email', null);
       });
     },
     toggle_recovery: function() {

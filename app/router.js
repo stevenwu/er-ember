@@ -15,6 +15,7 @@ Router.map(function() {
   });
   this.route('users/show');
   this.route('dashboard');
+  this.route('password_reset');
 });
 
 export default Router;
