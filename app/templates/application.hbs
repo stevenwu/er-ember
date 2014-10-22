@@ -4,6 +4,13 @@
   <div class='container'>
     {{link-to 'Stamford' 'application' class='navbar-brand'}}
     <ul class='nav navbar-nav'>
+    {{#if currentUser}}
+      {{#nav-item}}
+        {{#link-to 'dashboard' tagName='li'}}
+          <a href='#'>Dashboard</a>
+        {{/link-to}}
+      {{/nav-item}}
+    {{/if}}
     {{#nav-item}}
       {{#link-to 'about' tagName='li'}}
         <a href='#'>About</a>
