@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   email: null,
   password: null,
   response: null,
+  hidden: true,
 
   actions: {
     authenticate: function() {
@@ -35,6 +36,7 @@ export default Ember.Controller.extend({
         data: {user: {email: this.get('email')}}
       }).then(function(response) {
         self.set('email', null);
+        self.set('hidden', false);
       });
     },
     toggle_recovery: function() {
