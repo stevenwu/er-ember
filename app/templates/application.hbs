@@ -2,7 +2,11 @@
 
 <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
   <div class='container'>
-    {{link-to 'Stamford' 'application' class='navbar-brand'}}
+    {{#if currentUser}}
+      {{link-to 'Stamford' 'dashboard' class='navbar-brand'}}
+    {{else}}
+      {{link-to 'Stamford' 'application' class='navbar-brand'}}
+    {{/if}}
     <ul class='nav navbar-nav'>
     {{#if currentUser}}
       {{#nav-item}}
