@@ -37,6 +37,9 @@ export default Ember.Controller.extend({
       }).then(function(response) {
         self.set('email', null);
         self.set('hidden', false);
+        Ember.run.later(function() {
+          self.set('hidden', true);
+        }, 3000);
       });
     },
     toggle_recovery: function() {
