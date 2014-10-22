@@ -23,6 +23,8 @@ export default Ember.Controller.extend({
         self.store.createRecord('user', currentUser);
         self.set('currentUser', self.store.find('user', 'current'));
         self.set('role', currentUser.role);
+        self.set('email', null);
+        self.set('password', null);
         self.transitionToRoute('dashboard');
       });
     },
@@ -32,7 +34,6 @@ export default Ember.Controller.extend({
         type: 'POST',
         data: {user: {email: this.get('email')}}
       }).then(function(response) {
-        alert(self.get('email'));
         self.set('email', null);
       });
     },
