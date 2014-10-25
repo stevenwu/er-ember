@@ -25,4 +25,8 @@ app.import('bower_components/rails-csrf/dist/named-amd/main.js', {
   }
 });
 
+app.import('bower_components/leaflet-dist/leaflet-src.js');
+app.import('bower_components/leaflet-dist/leaflet.css');
+app.import('bower_components/ember-leaflet/dist/ember-leaflet.min.js');
+
 module.exports = app.toTree();
