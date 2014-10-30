@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
         data: {user: {reset_password_token: self.get('token'),
                       password: self.get('password'),
                       password_confirmation: self.get('passwordConfirmation')}}
-      }).then(function(response) {
+      }).then(function() {
         self.set('hidden', false);
         self.set('password', null);
         self.set('passwordConfirmation', null);

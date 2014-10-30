@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
       ajax('/api/password_reset', {
         type: 'POST',
         data: {user: {email: this.get('email')}}
-      }).then(function(response) {
+      }).then(function() {
         self.set('email', null);
         self.set('hidden', false);
         Ember.run.later(function() {
