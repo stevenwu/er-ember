@@ -2,16 +2,18 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 
 var App, server;
-var user = {
+var USER = {
   reset_password_token: 'fbd57d5aa48183850919f3d9134a4d95139a25aa33325b866d33451ba8df7367',
-  password: 'new_password'
+  password: 'new_password',
+  raw_token: 'ys5L7Bnmwwh-s7zd9igL'
 };
 
 function parsePostData(query) {
   var result = {};
-  query.split("&").forEach(function(part) {
-    var item = part.split("=");
-    result[item[0]] = decodeURIComponent(item[1]);
+  var decoded = decodeURIComponent(query);
+  decoded.split('&').forEach(function(part) {
+    var item = part.split('=');
+    result[item[0]] = item[1];
   });
   return result;
 }
@@ -22,6 +24,14 @@ function httpResponse(code, headers, body) {
     {'Content-Type': headers},
     JSON.stringify(body)
   ];
+}
+
+function isValidResetToken(rawToken, user) {
+  if (rawToken === user.raw_token) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 module('Integration - Password Reset', {
@@ -35,7 +45,8 @@ module('Integration - Password Reset', {
 
       this.put('/api/users/update_password', function(request) {
         var data = parsePostData(request.requestBody);
-        if (data.reset_password_token === user.reset_password_token) {
+
+        if (isValidResetToken(data["user[reset_password_token]"], USER)) {
           return httpResponse(200, 'application/json', {});
         } else {
           return httpResponse(400, 'application/json', {});
@@ -50,9 +61,9 @@ module('Integration - Password Reset', {
 });
 
 test ('should be able to reset password', function() {
-  visit('/password_reset?token=' + user.reset_password_token);
-  fillIn('input.password', user.password);
-  fillIn('input.password-confirmation', user.password);
+  visit('/password_reset?token=' + USER.raw_token);
+  fillIn('input.password', USER.password);
+  fillIn('input.password-confirmation', USER.password);
   click('button.submit');
 
   andThen(function() {
