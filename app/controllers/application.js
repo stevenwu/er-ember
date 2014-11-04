@@ -3,7 +3,9 @@ import ajax from 'ic-ajax';
 
 export default Ember.Controller.extend({
   auth_token: null,
-  currentUser: null,
+  currentUser: function() {
+    return this.session.get('user');
+  }.property(),
   role: null,
   isPremiumUser: function() {
     return this.get('role') === 'premium';

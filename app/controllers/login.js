@@ -19,6 +19,9 @@ export default Ember.Controller.extend({
       }).then(function(response) {
         self.set('response', response);
         self.set('auth_token', response.auth_token);
+        self.session.set('authToken', response.auth_token);
+        self.session.set('user', response.user);
+        self.session.set('userId', response.user.id);
         var currentUser = response.user;
         currentUser.id = 'current';
         self.store.createRecord('user', currentUser);
